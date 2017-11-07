@@ -1,0 +1,37 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en-US" ng-app="scienceFairForum">
+<head>
+    <meta charset="utf-8">
+
+    <!-- Include Stylesheets -->
+    <link rel="stylesheet" href="{% static 'node_modules/bootstrap/dist/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css">
+
+
+    <!-- Include JavaScript Files -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="{% static 'node_modules/bootstrap/dist/js/bootstrap.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.js"></script>
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+
+    <!-- Include Angular and other plugins -->
+    <script src="{% static 'node_modules/angular/angular.js' %}"></script>
+    <script src="{% static 'node_modules/angular-ui-router/release/angular-ui-router.js' %}"></script>
+    <script src="{% static 'node_modules/ngstorage/ngStorage.js' %}"></script>
+    <script src="{% static 'node_modules/lodash/lodash.js' %}"></script>
+    <script src="{% static 'node_modules/restangular/src/restangular.js' %}"></script>
+
+    <!-- Include Our App -->
+    <script src="{% static 'app.js' %}"></script>
+    <script src="{% static 'app_module.js' %}"></script>
+    <script src="{% static 'request.js' %}"></script>
+    <script src="{% static 'user/user-service.js' %}"></script>
+    <script src="{% static 'login/login-directive.js' %}"></script>
+
+</head>
+<body>
+    <div ui-view></div>
+</body>
+</html>
