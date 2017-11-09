@@ -35,7 +35,11 @@ myApp.config([
                     'requireAuth': function() { return true }
                 }
             })
-            .state('login', {
+            .state('base', {
+                abstract: true,
+                templateUrl: 'static/login/base.html',
+            })
+            .state('base.login', {
                 url:'/login',
                 template:'<login-directive></login-directive>',
                 resolve: {
