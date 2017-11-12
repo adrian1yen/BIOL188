@@ -2,6 +2,11 @@ myApp.service('Request', function(Restangular, CLIENT_INFO) {
     request = {};
     api = Restangular.all('api');
 
+
+    //~~~~~~~~~~~~~~~~~
+    // User Endpoints
+    //~~~~~~~~~~~~~~~~~
+
     // Authentication
     request.login = function(username, password) {
         return Restangular.all('auth').all('token').post({
@@ -14,7 +19,16 @@ myApp.service('Request', function(Restangular, CLIENT_INFO) {
         // return Restangular.one('auth').one('token').get()
     };
 
-    // User Information
+    // Registration
+    request.register = function(username, password, role) {
+        return api.all('users').post({
+            username:username,
+            password:password,
+            role:role
+        });
+    };
+
+    // Logged in user information
     request.me = function() {
         return api.one('me').get();
     };

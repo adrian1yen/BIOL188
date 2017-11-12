@@ -45,6 +45,13 @@ myApp.config([
                 resolve: {
                     'requireAuth': function() { return false }
                 }
+            })
+            .state('base.register', {
+                url:'/register',
+                template:'<register-directive></register-directive>',
+                resolve: {
+                    'requireAuth': function() { return false }
+                }
             });
     }
 ]);
