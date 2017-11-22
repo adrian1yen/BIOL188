@@ -12,13 +12,13 @@ from users.tests import factories as user_factories
 class UserTests(APITestCase):
     def test_get_object(self):
         teacher = user_factories.TeacherFactory()
-        self.assertEqual(teacher.get_user_object(), user_models.Teacher)
+        self.assertEqual(teacher.get_user_object(model=True), user_models.Teacher)
 
         mentor = user_factories.MentorFactory()
-        self.assertEqual(mentor.get_user_object(), user_models.Mentor)
+        self.assertEqual(mentor.get_user_object(model=True), user_models.Mentor)
 
         student = user_factories.StudentFactory()
-        self.assertEqual(student.get_user_object(), user_models.Student)
+        self.assertEqual(student.get_user_object(model=True), user_models.Student)
 
     def test_create_user(self):
         url = reverse('user-list')

@@ -1,0 +1,15 @@
+<h4>Classes</h4>
+<div class="classroom-widget-container profile-widget-container">
+    <!--<div class="sliding-menu-btn left-btn pull-left" ng-click="slideLeft()"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i></div>-->
+    <div class="sliding-menu pull-left" ng-show="classrooms.length > 0">
+        <div class="classroom-container pull-left" ng-click="goToClassroom(classroom.id)" ng-repeat="classroom in classrooms">
+            <div class="content">
+                <p><strong>{{ classroom.name }}</strong></p>
+                <span>{{ classroom.teacher }}</span>
+            </div>
+        </div>
+    </div>
+    <div class="text-center" ng-show="classrooms.length === 0">No classes</div>
+    <!--<div class="sliding-menu-btn right-btn pull-right" ng-click="slideRight()"><i class="fa fa-arrow-circle-right" aria-hidden="true"></i></div>-->
+    <div class="clearfix"></div>
+</div>

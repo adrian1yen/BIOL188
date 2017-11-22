@@ -6,3 +6,5 @@ db.sqlite3
 celerybeat-schedule.db
 dump.rdb
 .DS_Store
+client_info.js
+node_modules

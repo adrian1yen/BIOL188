@@ -16,5 +16,8 @@
     "lodash": "^4.17.4",
     "ngstorage": "^0.3.11",
     "restangular": "^1.6.1"
+  },
+  "devDependencies": {
+    "node-sass": "^4.7.2"
   }
 }

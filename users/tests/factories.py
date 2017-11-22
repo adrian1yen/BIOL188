@@ -32,3 +32,10 @@ class StudentFactory(UserProfileFactory):
         model = user_models.Student
 
     role = user_keys.STUDENT
+
+class ClassroomFactory(factory.django.DjangoModelFactory):
+    class Meta:
+        model = user_models.Classroom
+
+    name = factory.Faker('company')
+    teacher = factory.SubFactory(TeacherFactory)

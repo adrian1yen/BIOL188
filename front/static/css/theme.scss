@@ -1,0 +1,38 @@
+@import "variables";
+
+@import "home";
+@import "profile";
+
+body {
+  color: $greyDark;
+}
+
+.btn-light-blue {
+  background-color: $blueLight;
+  border-color: $blueLight;
+  color: $white;
+  &:hover {
+    background-color: $blueDark;
+    border-color: $blueDark;
+    color: $greyLight;
+  }
+}
+
+.btn-yellow {
+  background-color: $yellow;
+  border-color: $yellow;
+  color: $white;
+
+  &:hover {
+    background-color: $yellowDark;
+    border-color: $yellowDark;
+    color: $greyLight;
+  }
+
+}
+
+.truncate {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}

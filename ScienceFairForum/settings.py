@@ -42,7 +42,9 @@ INSTALLED_APPS = [
     'social_django',
     'rest_framework_social_oauth2',
     'django_extensions',
+    'debug_toolbar',
     'users',
+    'posts',
     'front',
 ]
 
@@ -54,6 +56,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'ScienceFairForum.urls'
@@ -147,3 +150,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+INTERNAL_IPS = ['127.0.0.1']

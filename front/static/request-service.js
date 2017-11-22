@@ -33,5 +33,25 @@ myApp.service('Request', function(Restangular, CLIENT_INFO) {
         return api.one('me').get();
     };
 
+
+    //~~~~~~~~~~~~~~~~
+    // User Endpoints
+    //~~~~~~~~~~~~~~~~
+
+    // Get user profile information
+    request.getUserProfile = function(userId) {
+        return api.one('users', userId).get()
+    };
+
+
+    //~~~~~~~~~~~~~~~~
+    // Post Endpoints
+    //~~~~~~~~~~~~~~~~
+
+    // Create post for classroom
+    request.createPost = function(data) {
+        return api.all('posts').post(data);
+    };
+
     return request
 });

@@ -23,7 +23,7 @@ myApp.service('User', [
                     user.userInfo.role = response.role;
                     user.userInfo.id = response.id;
                     $localStorage.userInfo = user.userInfo;
-                    $state.go('home');
+                    $state.go('home.users', {userId: user.userInfo.id});
                 });
             }
         }, function(error) {
@@ -31,13 +31,22 @@ myApp.service('User', [
         });
     };
 
+    user.logout = function() {
+        user.userInfo = {};
+        $localStorage.userInfo = undefined;
+        $localStorage.token = undefined;
+        Restangular.setDefaultHeaders({});
+        $state.go('base.login');
+    };
+
     user.getInfo = function() {
-        Request.me().then(function(response) {
+        return Request.me().then(function(response) {
             user.userInfo.username = response.username;
             user.userInfo.role = response.role;
             user.userInfo.id = response.id;
             $localStorage.userInfo = user.userInfo;
-            $state.go('home');
+        }, function(error) {
+            user.logout();
         })
 
     };

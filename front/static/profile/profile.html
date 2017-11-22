@@ -1,0 +1,10 @@
+<div class="row">
+    <div class="profile-container col-md-10 col-md-offset-1">
+        <div class="profile-header col-md-12">
+            <strong>{{ user.username }}</strong> ({{ user.role}})
+        </div>
+        <classrooms-widget-directive class="col-md-12" classrooms="classrooms" ng-if="userLoaded"></classrooms-widget-directive>
+        <comments-widget-directive class="col-md-12" comments="comments" ng-if="userLoaded"></comments-widget-directive>
+        <posts-widget-directive class="col-md-12" posts="posts" ng-if="userLoaded && user.role === USER_ROLES.STUDENT"></posts-widget-directive>
+    </div>
+</div>

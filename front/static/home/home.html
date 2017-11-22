@@ -1,3 +1,16 @@
-<div>
-    <span>THIS IS THE HOME PAGE</span>
-</div>
+<nav class="navbar navbar-blue">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" ng-click="goHome()">Home</a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <!--<li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>-->
+                <!--<li><a href="#">Link</a></li>-->
+            </ul>
+            <button type="button" class="btn btn-yellow navbar-btn navbar-right" ng-click="logout()" ng-show="currentUser" style="margin-left: 10px">Logout</button>
+            <p class="navbar-text navbar-right" ng-show="currentUser">Signed in as {{ currentUser.username }}</p>
+        </div>
+    </div>
+</nav>
+<div ui-view></div>

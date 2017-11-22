@@ -1,0 +1,24 @@
+<h4>Comments</h4>
+<div class="comments-widget-container profile-widget-container" width="400px">
+    <table class="table" style="table-layout: fixed;" ng-show="comments.length > 0">
+        <thead>
+            <th width="20%">Post Title</th>
+            <th width="80%">Comment</th>
+        </thead>
+        <tbody>
+            <tr ng-click="goToPost(comment.post_id)" ng-repeat="comment in comments|limitTo:commentLimit">
+                <td class="truncate">
+                    {{comment.post_title}}
+                </td>
+                <td class="truncate">
+                    {{comment.content}}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="text-center">
+        <a ng-click="toggleShow()" ng-show="!showingAll && comments.length > 5">Show All</a>
+        <a ng-click="toggleShow()" ng-show="showingAll && comments.length > 5">Hide</a>
+    </div>
+    <div class="text-center" ng-show="comments.length === 0">No comments</div>
+</div>

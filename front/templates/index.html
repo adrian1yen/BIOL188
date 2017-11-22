@@ -6,7 +6,8 @@
 
     <!-- Include Stylesheets -->
     <link rel="stylesheet" href="{% static 'node_modules/bootstrap/dist/css/bootstrap.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'css/theme.css' %}">
 
 
     <!-- Include JavaScript Files -->
@@ -24,12 +25,20 @@
     <script src="{% static 'node_modules/restangular/src/restangular.js' %}"></script>
 
     <!-- Include Our App -->
-    <script src="{% static 'app.js' %}"></script>
+    <script src="{% static 'app.route.js' %}"></script>
     <script src="{% static 'app.module.js' %}"></script>
+    <script src="{% static 'client-info.js' %}"></script>
     <script src="{% static 'request-service.js' %}"></script>
     <script src="{% static 'user/user-service.js' %}"></script>
+    <script src="{% static 'home/home-directive.js' %}"></script>
+    <script src="{% static 'login/base-directive.js' %}"></script>
     <script src="{% static 'login/login-directive.js' %}"></script>
     <script src="{% static 'login/register-directive.js' %}"></script>
+    <script src="{% static 'classroom/classroom-directive.js' %}"></script>
+    <script src="{% static 'profile/profile-directive.js' %}"></script>
+    <script src="{% static 'profile/classrooms-widget/classrooms-widget-directive.js' %}"></script>
+    <script src="{% static 'profile/comments-widget/comments-widget-directive.js' %}"></script>
+    <script src="{% static 'profile/posts-widget/posts-widget-directive.js' %}"></script>
 
 </head>
 <body>
