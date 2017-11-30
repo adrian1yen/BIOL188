@@ -2,10 +2,14 @@ from rest_framework import serializers
 from posts.serializers import CommentSerializer, PostSerializer
 from users import models as user_models
 
-class ClassroomSerializer(serializers.Serializer):
+class SimpleClassroomSerializer(serializers.Serializer):
     id = serializers.CharField()
     name = serializers.CharField()
     teacher = serializers.CharField(source="teacher.user.username")
+
+class ClassroomSerializer(SimpleClassroomSerializer):
+    posts = PostSerializer(many=True)
+    code = serializers.CharField()
 
 class CommentSerializer(serializers.Serializer):
     id = serializers.IntegerField()
@@ -24,6 +28,6 @@ class UserProfileSerializer(serializers.ModelSerializer):
         fields = ('id', 'role', 'username', 'classrooms', 'comments', 'posts')
 
     username = serializers.CharField(source='user.username')
-    classrooms = ClassroomSerializer(many=True)
+    classrooms = SimpleClassroomSerializer(many=True)
     comments = CommentSerializer(many=True)
     posts = PostSerializer(many=True, required=False)

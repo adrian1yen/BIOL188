@@ -5,6 +5,9 @@
   color: #FFFF; }
   .navbar-blue a {
     color: #FFFF; }
+  .navbar-blue .navbar-brand:hover {
+    cursor: pointer;
+    color: #EBC944; }
 
 .profile-header {
   font-size: 20px;
@@ -56,6 +59,20 @@
   .classroom-widget-container .sliding-menu-btn.right-btn {
     border-left: 2px #373D3F solid; }
 
+.classroom-post-container {
+  padding: 0 20px;
+  margin-bottom: 20px;
+  border: 1px #555F61 solid;
+  border-radius: 5px; }
+
+.post-comments-container {
+  padding: 20px 0; }
+  .post-comments-container .comment-container {
+    border-bottom: 1px #43ABC9 solid;
+    padding: 20px 0; }
+  .post-comments-container div:last-child {
+    border-bottom: none; }
+
 body {
   color: #373D3F; }
 
@@ -77,7 +94,28 @@ body {
     border-color: #BCA136;
     color: #A7B0B2; }
 
+.btn-orange {
+  background-color: #F26D21;
+  border-color: #F26D21;
+  color: #FFFF; }
+  .btn-orange:hover {
+    background-color: #F26D21;
+    border-color: #F26D21;
+    color: #FFFF; }
+
+.btn-green {
+  background-color: #93A661;
+  border-color: #93A661;
+  color: #FFFF; }
+  .btn-green:hover {
+    background-color: #829356;
+    border-color: #829356;
+    color: #A7B0B2; }
+
 .truncate {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden; }
+
+.no-padding {
+  padding: 0; }

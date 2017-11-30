@@ -6,6 +6,7 @@ from users import keys as user_keys
 class UserFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = User
+        django_get_or_create = ('username',)
 
     username = factory.Faker('first_name')
 

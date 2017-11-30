@@ -1,6 +1,7 @@
 var myApp = angular.module('scienceFairForum', [
     'ui.router',
     'ngStorage',
+    'ui.bootstrap',
     'restangular']);
 
 myApp.config([
@@ -27,7 +28,6 @@ myApp.config([
 
         // Routing
         $urlRouterProvider.otherwise(function($injector, $location) {
-            console.log('rerouting');
             $injector.invoke(['$state', 'User', function($state, User){
                 if (!User.userInfo.id) {
                     User.getInfo().then(function() {
@@ -76,8 +76,33 @@ myApp.config([
                 template: '<profile-directive></profile-directive>'
             })
             .state('home.classrooms', {
+                abstract: true,
                 url:'/classrooms/{classroomId:int}',
-                template: '<classroom-directive></classroom-directive>'
+                template: '<classroom-directive classroom="classroom"></classroom-directive>',
+                resolve: {
+                    'classroom': function(Request, $stateParams) {
+                        return Request.getClassroom($stateParams.classroomId).then(function(response) {
+                            return response.plain();
+                        });
+                    }
+                },
+                controller: function($scope, classroom) {
+                    $scope.classroom = classroom;
+                }
+            })
+            .state('home.classrooms.overview', {
+                url: '/overview',
+                template: '<classroom-overview-directive classroom="classroom"></classroom-overview-directive>',
+                controller: function($scope, classroom) {
+                    $scope.classroom = classroom;
+                }
+            })
+            .state('home.classrooms.posts', {
+                url: '/posts/{postId:int}',
+                template: '<classroom-post-directive classroom="classroom"></classroom-post-directive>',
+                controller: function($scope, classroom) {
+                    $scope.classroom = classroom;
+                }
             });
     }
 ]);

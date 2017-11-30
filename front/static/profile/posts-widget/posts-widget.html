@@ -3,12 +3,16 @@
     <table class="table" style="table-layout: fixed;" ng-show="posts.length > 0">
         <thead>
         <th width="20%">Post Title</th>
-        <th width="80%">Content</th>
+        <th width="20%">Author</th>
+        <th width="60%">Content</th>
         </thead>
         <tbody>
-        <tr ng-click="goToPost(post.id)" ng-repeat="post in posts|limitTo:postsLimit">
+        <tr ng-click="goToPost(post.classroom.id, post.id)" ng-repeat="post in posts|limitTo:postsLimit">
             <td class="truncate">
                 {{post.title}}
+            </td>
+            <td class="truncate">
+                {{post.author.username}}
             </td>
             <td class="truncate">
                 {{post.content}}

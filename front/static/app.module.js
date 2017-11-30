@@ -33,5 +33,5 @@ myApp.run([
 myApp.constant('USER_ROLES', {
     'TEACHER': 'teacher',
     'MENTOR': 'mentor',
-    'STUDENT': 'studnet'
+    'STUDENT': 'student'
 });

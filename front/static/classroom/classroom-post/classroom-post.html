@@ -1,0 +1,28 @@
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <div class="classroom-post-container">
+            <h4>{{ post.title }}</h4>
+            <h5>{{ post.author.username }}</h5>
+            <p>{{ post.content }}</p>
+        </div>
+        <div class="col-md-8 no-padding">
+            <form ng-submit="createComment(comment)">
+                <div class="form-group">
+                    <label for="comment">Comment</label>
+                    <textarea class="form-control" id="comment" ng-model="comment" rows="5"></textarea>
+                </div>
+                <button type="submit" class="btn btn-green">Submit</button>
+            </form>
+        </div>
+        <div class="col-md-12 post-comments-container">
+            <div class="comment-container" ng-repeat="comment in post.comments">
+                <a ng-click="goToUser(comment.author.id)">{{ comment.author.username }}</a>
+                <br/>
+                {{ comment.content }}
+            </div>
+            <div ng-if="post.comments.length === 0">
+                There are no comments.
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+<div class="modal-body" id="modal-body">
+    <div class="alert alert-danger" ng-show="error">
+        {{ error }}
+    </div>
+    <label for="classroomCode">Class Code:</label>
+    <input id="classroomCode" class="col-md-12" type="text" ng-model="classroomCode" required/>
+    <div class="clearfix"></div>
+</div>
+<div class="modal-footer">
+    <button type="submit" class="btn btn-light-blue" ng-click="addClassroom(classroomCode)">Add</button>
+    <button class="btn btn-yellow" type="button" ng-click="closeModal()">Cancel</button>
+</div>

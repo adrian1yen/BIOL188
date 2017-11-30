@@ -6,16 +6,16 @@
 
     <!-- Include Stylesheets -->
     <link rel="stylesheet" href="{% static 'node_modules/bootstrap/dist/css/bootstrap.css' %}">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'node_modules/angular-ui-bootstrap/dist/ui-bootstrap-csp.css' %}">
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">-->
     <link rel="stylesheet" href="{% static 'css/theme.css' %}">
 
 
     <!-- Include JavaScript Files -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="{% static 'node_modules/jquery/dist/jquery.slim.js' %}"></script>
     <script src="{% static 'node_modules/bootstrap/dist/js/bootstrap.js' %}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.js"></script>
-    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <!--<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>-->
+    <!--<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>-->
 
     <!-- Include Angular and other plugins -->
     <script src="{% static 'node_modules/angular/angular.js' %}"></script>
@@ -23,6 +23,7 @@
     <script src="{% static 'node_modules/ngstorage/ngStorage.js' %}"></script>
     <script src="{% static 'node_modules/lodash/lodash.js' %}"></script>
     <script src="{% static 'node_modules/restangular/src/restangular.js' %}"></script>
+    <script src="{% static 'node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js' %}"></script>
 
     <!-- Include Our App -->
     <script src="{% static 'app.route.js' %}"></script>
@@ -35,6 +36,8 @@
     <script src="{% static 'login/login-directive.js' %}"></script>
     <script src="{% static 'login/register-directive.js' %}"></script>
     <script src="{% static 'classroom/classroom-directive.js' %}"></script>
+    <script src="{% static 'classroom/classroom-overview/classroom-overview-directive.js' %}"></script>
+    <script src="{% static 'classroom/classroom-post/classroom-post-directive.js' %}"></script>
     <script src="{% static 'profile/profile-directive.js' %}"></script>
     <script src="{% static 'profile/classrooms-widget/classrooms-widget-directive.js' %}"></script>
     <script src="{% static 'profile/comments-widget/comments-widget-directive.js' %}"></script>

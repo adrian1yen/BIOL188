@@ -1,0 +1,18 @@
+.classroom-post-container {
+  padding: 0 20px;
+  margin-bottom: 20px;
+  border: 1px $grey solid;
+  border-radius: 5px;
+}
+
+.post-comments-container {
+  padding: 20px 0;
+  .comment-container {
+    border-bottom: 1px $blueLight solid;
+    padding: 20px 0;
+  }
+  div:last-child {
+    border-bottom: none;
+  }
+}
+

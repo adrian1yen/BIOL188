@@ -1,0 +1,9 @@
+<div class="modal-body" id="modal-body">
+    <label for="classroomName">Class Name:</label>
+    <input id="classroomName" class="col-md-12" type="text" ng-model="classroomName" required/>
+    <div class="clearfix"></div>
+</div>
+<div class="modal-footer">
+    <button type="submit" class="btn btn-light-blue" ng-click="createClassroom(classroomName)">Create</button>
+    <button class="btn btn-yellow" type="button" ng-click="closeModal()">Cancel</button>
+</div>

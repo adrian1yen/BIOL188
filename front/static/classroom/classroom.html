@@ -1,14 +1,11 @@
 <div class="row">
-    <div class="col-md-6 col-md-offset-3">
-        <form ng-submit="createPost(content)">
-            <div class="alert alert-danger" ng-show="error">
-                {{ error }}
-            </div>
-            <div class="form-group">
-                <label for="content">Create a Post:</label>
-                <textarea class="form-control" rows="5" id="content" ng-model="content"></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Post</button>
-        </form>
+    <div class="profile-container col-md-10 col-md-offset-1">
+        <div class="profile-header col-md-12">
+            <strong>{{ classroom.name }}</strong> {{ classroom.teacher}}
+            <span class="pull-right" ng-if="User.isTeacher()">code: {{ classroom.code }}</span>
+        </div>
+        <br />
+        <br />
+        <div ui-view></div>
     </div>
 </div>

@@ -6,7 +6,7 @@ angular.module("scienceFairForum").directive('classroomsWidgetDirective', functi
         },
         controller: ['$scope', '$state', 'User', function($scope, $state, User) {
             $scope.goToClassroom = function(classroomId) {
-                $state.go('home.classrooms', {classroomId: classroomId});
+                $state.go('home.classrooms.overview', {classroomId: classroomId});
             }
         }]
     }

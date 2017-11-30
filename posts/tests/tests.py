@@ -13,54 +13,51 @@ from users.tests import factories as user_factories
 from posts.tests import factories as post_factories
 
 class PostTests(APITestCase):
+    def setUp(self):
+        self.student = user_factories.StudentFactory()
+        self.classroom_1 = user_factories.ClassroomFactory()
+        self.classroom_2 = user_factories.ClassroomFactory()
+        self.student.classrooms.add(self.classroom_1.id)
+        self.student.classrooms.add(self.classroom_2.id)
+        self.student.save()
+        self.post1 = post_factories.PostFactory(
+            author=self.student,
+            classroom=self.classroom_1,
+        )
+        self.post2 = post_factories.PostFactory(
+            author=self.student,
+            classroom=self.classroom_2,
+        )
+        super(PostTests, self).setUp()
 
-    def test_get_posts(self):
-        url = reverse('post-list')
-
-        student = user_factories.StudentFactory()
-
-
+    def test_get_users_posts(self):
+        url = reverse('user-post-list', kwargs={'user_id': self.student.id})
         # Test getting all user's classroom's posts
-        student = user_models.Student.objects.get(id=student.id)
+        student = user_models.Student.objects.get(id=self.student.id)
         self.client.force_authenticate(user=student.user)
-        classroom_1 = user_factories.ClassroomFactory()
-        classroom_2 = user_factories.ClassroomFactory()
-        student.classrooms.add(classroom_1.id)
-        student.classrooms.add(classroom_2.id)
-        student.save()
-        post_factories.PostFactory(
-            classroom=classroom_1,
-        )
-        post_factories.PostFactory(
-            classroom=classroom_2,
-        )
-
-
         response = self.client.get(url, format='json')
         self.assertEqual(response.data.get('count'), 2)
 
-
-        # Test getting specific classroom's posts
-        data = {
-            'classroom': classroom_1.id
-        }
-
-        response = self.client.get(url, data)
-        self.assertEqual(response.data.get('count'), 1)
-        self.assertEqual(response.data['results'][0].get('classroom').get('id'), classroom_1.id)
+    def test_get_classrooms_post(self):
+        url = reverse('classroom-post-detail', kwargs={'classroom_id': self.classroom_1.id, 'post_id': self.post1.id})
+        student = user_models.Student.objects.get(id=self.student.id)
+        self.client.force_authenticate(user=student.user)
+        response = self.client.get(url, format='json')
+        self.assertEqual(response.data.get('id'), self.post1.id)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
 
     def test_create_post(self):
-        url = reverse('post-list')
-
         student = user_factories.StudentFactory()
         classroom = user_factories.ClassroomFactory()
         student.classrooms.add(classroom.id)
         student.save()
 
+        url = reverse('classroom-post-list', kwargs={'classroom_id': classroom.id})
+
         # Test creating post
         data = {
+            'title': 'The backstreet boizzzz',
             'content': 'I want it thata way.',
-            'classroom': classroom.id,
         }
         self.client.force_authenticate(user=student.user)
         response = self.client.post(url, data, format='json')
@@ -77,24 +74,16 @@ class PostTests(APITestCase):
         response = self.client.post(url, data, format='json')
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 
-        # Test student posting to classroom they are not in
-        data = {
-            'content': 'Tell Me why.',
-            'classroom': classroom.id + 1,
-        }
-        response = self.client.post(url, data, format='json')
-        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
-
-
         # Test non student making post
         teacher = user_factories.TeacherFactory()
         data = {
-            'content': "Ain't nothing but a mistake.",
-            'classroom': 2,
+            'title': 'Tell me why.',
+            'content': "Ain't nothing but a heartbreak? heartache?",
+            'classroomId': 2,
         }
         self.client.force_authenticate(user=teacher.user)
         response = self.client.post(url, data, format='json')
-        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
 
 

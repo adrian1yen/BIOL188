@@ -6,4 +6,10 @@
   a {
     color: $white;
   }
+  .navbar-brand {
+    &:hover {
+      cursor: pointer;
+      color: $yellow;
+    }
+  }
 }

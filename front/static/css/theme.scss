@@ -1,7 +1,9 @@
 @import "variables";
 
+@import "login";
 @import "home";
 @import "profile";
+@import "classroom";
 
 body {
   color: $greyDark;
@@ -22,17 +24,41 @@ body {
   background-color: $yellow;
   border-color: $yellow;
   color: $white;
-
   &:hover {
     background-color: $yellowDark;
     border-color: $yellowDark;
     color: $greyLight;
   }
+}
 
+.btn-orange {
+  background-color: $orange;
+  border-color: $orange;
+  color: $white;
+  &:hover {
+    background-color: $orange;
+    border-color: $orange;
+    color: $white;
+  }
+}
+
+.btn-green {
+  background-color: $green;
+  border-color: $green;
+  color: $white;
+  &:hover {
+    background-color: $greenDark;
+    border-color: $greenDark;
+    color: $greyLight;
+  }
 }
 
 .truncate {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+}
+
+.no-padding {
+  padding: 0;
 }
