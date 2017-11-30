@@ -9,8 +9,9 @@ from rest_framework.test import APITestCase
 
 from users import keys as user_keys
 from users import models as user_models
-from users.tests import factories as user_factories
 from users.permissions import IsInClassroom, CanViewUser
+from users.tests import factories as user_factories
+
 
 class UserTests(APITestCase):
     def test_get_object(self):
@@ -155,3 +156,29 @@ class UserTests(APITestCase):
             self.assertEqual(response.data, 'Teachers cannot add classes. They can only create them.')
             mock_save.assert_not_called()
 
+class ClassroomTest(APITestCase):
+   def test_create_classroom(self):
+        teacher = user_factories.TeacherFactory()
+        url = reverse('classroom-list')
+
+        # Testing successful create
+        self.client.force_authenticate(user=teacher.user)
+        data = {
+           'name': 'namename',
+        }
+        response = self.client.post(url, data, format='json')
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        self.assertEqual(response.data.get('name'), data.get('name'))
+
+        # Testing student creating class
+        student = user_factories.StudentFactory()
+        self.client.force_authenticate(user=student.user)
+        response = self.client.post(url, data, format='json')
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.data, 'Must be a teacher to create a class.')
+
+        # Testing bad data
+        data = {}
+        response = self.client.post(url, data, format='json')
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+        self.assertEqual(response.data, 'Name is required.')
