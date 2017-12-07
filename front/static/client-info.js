@@ -1,4 +1,0 @@
-myApp.constant('CLIENT_INFO', {
-    'CLIENT_ID': 'rPoIgWgabADDBPjt7kdPFyGG8yaTensmkpzOGgn2',
-    'CLIENT_SECRET': '1dJH9fgxexsBAuHY5vMenAK00tVQdYrmVu1N5xYes7XRApK4Rwnw86UFU75FxsUo2fMMGokm6zvlfVAjGjEg4rWl4ZeYeHiSbE341eXMrT7EOUYKBZxG4K2lk1Q3c7Bu',
-});

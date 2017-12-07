@@ -37,4 +37,6 @@ class CanViewUser(permissions.BasePermission):
             flat=True
         ))
 
-        return len(classrooms.intersection(request_user_classrooms)) >= 1 or int(user_id) == request.user.id
+        request_user_id = UserProfile.objects.get(user=request.user).id
+
+        return len(classrooms.intersection(request_user_classrooms)) >= 1 or int(user_id) == request_user_id
