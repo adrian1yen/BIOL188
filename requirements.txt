@@ -7,7 +7,7 @@ chardet==3.0.4
 colorama==0.3.7
 Django==1.11.7
 django-braces==1.11.0
-django-debug-toolbar==1.9.1
+django-debug-toolbar==1.11.1
 django-extensions==1.9.7
 django-oauth-toolkit==1.0.0
 django-rest-framework-social-oauth2==1.0.8
